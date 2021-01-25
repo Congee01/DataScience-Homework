@@ -8,3 +8,4 @@ file201912，file202001，file202002，file202003，file202004，file202005，fi
 py文件说明：
 spider中的代码为爬取新闻以及分析新闻的代码
 wordcloudest中的代码为数据可视化所用到的代码
+Annalysis开头的和Extract开头的文件为评论中心态分析的代码
