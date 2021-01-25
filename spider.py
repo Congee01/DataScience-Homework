@@ -117,35 +117,31 @@ def SaveData(datalist, savepath):
 #print('文件写入成功!')
 
 
-#txt=open("file202006.txt","r",encoding="utf-8").read()
-#words = jieba.lcut(txt)  # 使用精确模式对文本进行分词
-#counts = {}  # 通过键值对的形式存储词语及其出现的次数
-#PassWord=['中国','美国','香港','我们','一个','问题','报道','国家','表示','他们','没有','自己','标题','进行','记者'
-    #,'警方','已经','这个','今年','可以','就是','通过','这些','媒体','认为','可能','世界','一些','社会','国际',
-          #'企业','公司','俄罗斯','情况','发现','政治','时间','如果','不是','中方','书记','开始','调查','政府','这样','要求',
-          #'重要','其中','目前','总统','什么','成为','作为','有关','相关','因为','新闻','发生','关系','还是','显示','现在',
-          #'网友','希望','习近平','支持','活动','工作','伊朗','武汉','病例','确诊','医院','社区','日本','人员','新型','疫情'
-          #,'湖北','信息','特朗普','新冠','病毒','发展','英国','印度','北京','肺炎','患者','组织','出现']
-#for word in words:
-    #if word in PassWord:  #在停词表内的词跳过
-        #continue
-    #if len(word)==1 : # 单个字符的词跳过
-        #continue
-    #if str(word).isdigit(): #是数字的也跳过
-        #continue
-    #if str(word)=="fail": #因为上面出现异常时写入的是fail，所以fail也需要跳过
-        #continue
-    #else:
-        #counts[word] = counts.get(word, 0) + 1  # 遍历所有词语，每出现一次其对应的值加 1
+txt=open("file202006.txt","r",encoding="utf-8").read()
+words = jieba.lcut(txt)  # 使用精确模式对文本进行分词
+counts = {}  # 通过键值对的形式存储词语及其出现的次数
+PassWord=['中国','美国','香港','我们','一个','问题','报道','国家','表示','他们','没有','自己','标题','进行','记者'
+    ,'警方','已经','这个','今年','可以','就是','通过','这些','媒体','认为','可能','世界','一些','社会','国际',
+          '企业','公司','俄罗斯','情况','发现','政治','时间','如果','不是','中方','书记','开始','调查','政府','这样','要求',
+          '重要','其中','目前','总统','什么','成为','作为','有关','相关','因为','新闻','发生','关系','还是','显示','现在',
+          '网友','希望','习近平','支持','活动','工作','伊朗','武汉','病例','确诊','医院','社区','日本','人员','新型','疫情'
+         ,'湖北','信息','特朗普','新冠','病毒','发展','英国','印度','北京','肺炎','患者','组织','出现']
+for word in words:
+    if word in PassWord:  #在停词表内的词跳过
+        continue
+    if len(word)==1 : # 单个字符的词跳过
+        continue
+    if str(word).isdigit(): #是数字的也跳过
+        continue
+    if str(word)=="fail": #因为上面出现异常时写入的是fail，所以fail也需要跳过
+        continue
+    else:
+        counts[word] = counts.get(word, 0) + 1  # 遍历所有词语，每出现一次其对应的值加 1
 
-#items = list(counts.items())  # 将键值对转换成列表
-#items.sort(key=lambda x: x[1], reverse=True)  # 根据词语出现的次数进行从大到小排序
-#f=open('202006top10.txt','w') # 写入相应的txt文件中
-#for i in range(10):
-    #word, count = items[i]
-    #print("{0:<5}{1:>5}".format(word, count),file=f)
-#f.close()
-document = "你好，欢迎在Python中调用HanLP的API"
-
-# 分词
-print(HanLP.segment(document))
+items = list(counts.items())  # 将键值对转换成列表
+items.sort(key=lambda x: x[1], reverse=True)  # 根据词语出现的次数进行从大到小排序
+f=open('202006top10.txt','w') # 写入相应的txt文件中
+for i in range(10):
+    word, count = items[i]
+    print("{0:<5}{1:>5}".format(word, count),file=f)
+f.close()
